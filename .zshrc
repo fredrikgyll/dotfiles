@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/fredrikg/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 DEFAULT_USER="fredrikg"
 
@@ -87,8 +87,11 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Virtualenvironmentsettings for Python projects
-export WORKON_HOME=$HOME/Projects/.virtualenvs
-export PROJECT_HOME=$HOME/Projects
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.6
-#source /usr/local/bin/virtualenvwrapper.sh
-source /Library/Frameworks/Python.framework/Versions/3.6/bin/virtualenvwrapper.sh
+if [ $LOCAL_MAC = 'local' ]
+then
+        export WORKON_HOME=$HOME/Projects/.virtualenvs
+        export PROJECT_HOME=$HOME/Projects
+        export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.6
+        #source /usr/local/bin/virtualenvwrapper.sh
+        source /Library/Frameworks/Python.framework/Versions/3.6/bin/virtualenvwrapper.sh
+fi
