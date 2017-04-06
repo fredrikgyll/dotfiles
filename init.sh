@@ -1,9 +1,10 @@
 #!/bin/sh
 #Install oh-my-zsh if it isnt already
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
+if [ ! -d "$HOME/.oh-my-zsh" ]
+then
           # Control will enter here if $DIRECTORY doesn't exist.
             sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-  fi
+    fi
 #create symlinks
 ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
 ln -s $HOME/dotfiles/.vimrc $HOME/.vimrc
