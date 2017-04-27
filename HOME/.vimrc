@@ -1,3 +1,6 @@
+" Set incompatible with vi
+set nocompatible
+
 " Enable syntax highlighting
 syntax enable
 
