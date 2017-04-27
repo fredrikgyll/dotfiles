@@ -1,4 +1,4 @@
-" Set incompatible with vi
+" Set incompatible with vi and fix backspace issue
 set nocompatible
 
 " Enable syntax highlighting
