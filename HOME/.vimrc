@@ -1,5 +1,6 @@
 " Set incompatible with vi and fix backspace issue
 set nocompatible
+set backspace=indent,eol,start
 
 " Enable syntax highlighting
 syntax enable
