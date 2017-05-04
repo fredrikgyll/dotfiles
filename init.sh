@@ -11,13 +11,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/ba
 setopt glob_dots
 
 #create symlinks for $HOME
-ln -fs $HOME/dotfiles/HOME/* $HOME/
+ln -fs $HOME/dotfiles/home/* $HOME/
 #create symlinks for $ZSH_CUSTOM
-ln -fs $HOME/dotfiles/ZSH_CUSTOM/* $ZSH_CUSTOM/
+ln -fs $HOME/dotfiles/zsh_custom/* $ZSH_CUSTOM/
 
-#create dir and symlink darcula theme
-mkdir -p $HOME/.vim/colors
-ln -fs $HOME/dotfiles/.vim/colors/darcula.vim $HOME/.vim/colors/darcula.vim
 source $HOME/.zshrc
 echo "init complete"
 
