@@ -87,7 +87,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Virtualenvironmentsettings for Python projects
-if [ $LOCAL_MAC = 'local' ]
+if [ "$LOCAL_MAC" = "local" ]
 then
         export WORKON_HOME=$HOME/Projects/.virtualenvs
         export PROJECT_HOME=$HOME/Projects
