@@ -1,3 +1,6 @@
 #ingore plugins installed with vundle and tpm
 home/.vim/bundle/*
 home/.tmux/*
+
+#ignore .netrwhist
+home/.vim/.netrwhist

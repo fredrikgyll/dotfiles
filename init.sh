@@ -15,6 +15,11 @@ ln -fs $HOME/dotfiles/home/* $HOME/
 #create symlinks for $ZSH_CUSTOM
 ln -fs $HOME/dotfiles/zsh_custom/* $ZSH_CUSTOM/
 
+if [ ! -d /home/.vim/bundle/Vundle.vim/.git ]
+then
+        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
 source $HOME/.zshrc
 echo "init complete"
 
