@@ -22,6 +22,11 @@ Plugin 'danro/rename.vim'               " Enables :rename <new_name>
 Plugin 'chrisbra/Recover.vim'           " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
 Plugin 'godlygeek/tabular'              " :Tab /<repexp> in order to allign
 Plugin 'plasticboy/vim-markdown'        " Markdown syntax
+Plugin 'w0rp/ale'                       " Linter which uses shellckeck
+Plugin 'nvie/vim-flake8'                " PEP8 linter
+Plugin 'Valloric/YouCompleteMe'         " Autocompletion
+Plugin 'sheerun/vim-polyglot'           " Syntax for 100+ languages
+Plugin 'plytophogy/vim-virtualenv'      " controlling virtualenvs from within vim
 " see :h vundle for more details or wiki for FAQ
 
 " All of your Plugins must be added before the following line
@@ -30,26 +35,34 @@ filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 
+"mapping tab
+map <c-n> :tabn<CR>
+map <c-p> :tabp<CR>
+map <c-e> :tabe<space>
+
+"Ctrl-c to copy in Vmode
+vnoremap <C-c> :w !pbcopy<CR><CR> 
+"noremap <C-S-v> :r !pbpaste<CR><CR>
+
 " Put your non-Plugin stuff after this line
 set backspace=2
 
 " Enable syntax highlighting
 syntax enable
 
-" Enable colortheme Darcula for syntax highlighting
-colo darcula
+" Enable OneDark colorscheme
+colorscheme onedark
 
 " Enable linenumbering
-set number
+set relativenumber
 
-" One tab in file is shown as 4 spaces
-set tabstop=4
+" Execute python script
+nnoremap <F9> :w<CR>:exec '!python' shellescape(@%, 1)<CR>
+inoremap <F9> <ESC>:w<CR>:exec '!python' shellescape(@%, 1)<CR>
 
 " One tab inserts 4 spaces
-set softtabstop=4
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 
-" Tab is set with above
-set expandtab
 
 " Higlight cursorline
 set cursorline
@@ -71,6 +84,9 @@ set incsearch
 
 " Highlight search matches
 set hlsearch
+
+" denine encoding
+set encoding=utf-8
 
 " Remove highlight after finished search
 nnoremap <leader><space> :nohlsearch<CR>
