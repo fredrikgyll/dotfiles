@@ -1,6 +1,0 @@
-alias czsh='vim $HOME/.zshrc'
-alias szsh='source ~/.zshrc'
-alias ls='exa'
-alias l='ls -l'
-alias la='ls --long -H -a --git --grid'
-alias lt='exa --tree --git --level=2 --long'
