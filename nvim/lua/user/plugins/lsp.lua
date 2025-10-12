@@ -33,9 +33,7 @@ return {
           vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
           vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
           vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-          vim.keymap.set('n', '<leader>f', function()
-            vim.lsp.buf.format { async = true }
-          end, opts)
+          -- Format handled by conform.nvim (<leader>f)
         end,
       })
 
@@ -108,34 +106,22 @@ return {
         capabilities = capabilities,
       })
 
-      vim.lsp.config('html', {
-        cmd = { 'vscode-html-language-server', '--stdio' },
-        filetypes = { "html", "templ", "jinja.html", "htmljinja" },
-        capabilities = capabilities,
-      })
+       vim.lsp.config('html', {
+         cmd = { 'vscode-html-language-server', '--stdio' },
+         filetypes = { "html", "templ", "jinja.html", "htmljinja" },
+         capabilities = capabilities,
+       })
 
       -- Enable all configured LSP servers
       vim.lsp.enable({
-        'pyright', 'bashls', 'denols', 'ts_ls',
-        'jsonls', 'tailwindcss', 'html'
+	      'pyright',
+	      'bashls',
+	      'denols',
+	      'ts_ls',
+	      'jsonls',
+	      'tailwindcss',
+	      'html',
       })
     end
-  },
-
-  -- Tailwind tools
-  {
-    'luckasRanarison/tailwind-tools.nvim',
-    event = 'LspAttach',
-    opts = {
-      server = {
-        override = true,
-      },
-      extension = {
-        patterns = {
-          html = { "class=[\"']([^\"']+)[\"']" },
-          htmljinja = { "class=[\"']([^\"']+)[\"']" },
-        },
-      }
-    }
   },
 }

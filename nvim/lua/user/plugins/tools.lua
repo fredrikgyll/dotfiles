@@ -29,9 +29,4 @@ return {
     'towolf/vim-helm',
     ft = 'helm',
   },
-
-  -- Sensible defaults (may be redundant with modern Neovim)
-  {
-    'tpope/vim-sensible',
-  },
 }

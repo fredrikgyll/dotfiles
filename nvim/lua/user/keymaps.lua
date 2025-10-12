@@ -18,28 +18,21 @@ keymap('v', '<leader>y', '"+y', opts)
 keymap('v', '<leader>Y', '"+yg$', opts)
 keymap('n', '<leader>y', '"+y', opts)
 keymap('n', '<leader>yy', '"+yy', opts)
-keymap('n', '<leader>p', ':set paste<CR>"+p:set nopaste<CR>', opts)
-keymap('n', '<leader>P', ':set paste<CR>"+P:set nopaste<CR>', opts)
-keymap('v', '<leader>p', ':set paste<CR>"+p:set nopaste<CR>', opts)
-keymap('v', '<leader>P', ':set paste<CR>"+P:set nopaste<CR>', opts)
+-- Neovim automatically handles paste mode, no need for :set paste
+keymap('n', '<leader>p', '"+p', opts)
+keymap('n', '<leader>P', '"+P', opts)
+keymap('v', '<leader>p', '"+p', opts)
+keymap('v', '<leader>P', '"+P', opts)
 
 -- Keep selection when indenting
 keymap('v', '<', '<gv', opts)
 keymap('v', '>', '>gv', opts)
 
+keymap('n', '<C-C>', ':Bdelete<CR>', opts)
+
 -- Buffer navigation
 keymap('n', '<C-N>', ':bnext<CR>', opts)
 keymap('n', '<C-P>', ':bprev<CR>', opts)
-
--- Smart buffer close (will be defined in editing.lua with bufkill)
-keymap('n', '<C-c>', function()
-  local active_buffer_count = #vim.fn.getbufinfo({ buflisted = 1 })
-  if vim.fn.expand('%:p') ~= '' and active_buffer_count > 1 then
-    vim.cmd('BD')
-  else
-    vim.cmd('bd')
-  end
-end, opts)
 
 -- Search behavior (make # and ? work same way as /)
 keymap('n', 'n', function()

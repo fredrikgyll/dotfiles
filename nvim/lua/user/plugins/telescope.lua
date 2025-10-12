@@ -2,7 +2,6 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.6',
     lazy = false,  -- Load immediately to avoid issues
     priority = 100,
     dependencies = {

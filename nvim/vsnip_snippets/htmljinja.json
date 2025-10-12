@@ -1,0 +1,103 @@
+{
+  "Jinja Block": {
+    "prefix": "jblock",
+    "body": [
+      "{% block ${1:name} %}",
+      "\t$0",
+      "{% endblock $1 %}"
+    ],
+    "description": "Jinja block tag"
+  },
+  "Jinja Extends": {
+    "prefix": "jextends",
+    "body": "{% extends \"${1:base.html}\" %}",
+    "description": "Jinja extends tag"
+  },
+  "Jinja Include": {
+    "prefix": "jinclude",
+    "body": "{% include \"${1:template.html}\" %}",
+    "description": "Jinja include tag"
+  },
+  "Jinja For Loop": {
+    "prefix": "jfor",
+    "body": [
+      "{% for ${1:item} in ${2:items} %}",
+      "\t$0",
+      "{% endfor %}"
+    ],
+    "description": "Jinja for loop"
+  },
+  "Jinja If": {
+    "prefix": "jif",
+    "body": [
+      "{% if ${1:condition} %}",
+      "\t$0",
+      "{% endif %}"
+    ],
+    "description": "Jinja if statement"
+  },
+  "Jinja If Else": {
+    "prefix": "jifelse",
+    "body": [
+      "{% if ${1:condition} %}",
+      "\t${2}",
+      "{% else %}",
+      "\t$0",
+      "{% endif %}"
+    ],
+    "description": "Jinja if-else statement"
+  },
+  "Jinja Variable": {
+    "prefix": "jvar",
+    "body": "{{ ${1:variable} }}",
+    "description": "Jinja variable"
+  },
+  "Jinja Variable with Filter": {
+    "prefix": "jvarf",
+    "body": "{{ ${1:variable}|${2:filter} }}",
+    "description": "Jinja variable with filter"
+  },
+  "Jinja Comment": {
+    "prefix": "jcomment",
+    "body": "{# ${1:comment} #}",
+    "description": "Jinja comment"
+  },
+  "Jinja URL": {
+    "prefix": "jurl",
+    "body": "{% url '${1:view_name}' ${2:args} %}",
+    "description": "Django URL tag"
+  },
+  "Jinja Static": {
+    "prefix": "jstatic",
+    "body": "{% static '${1:path}' %}",
+    "description": "Django static tag"
+  },
+  "Jinja CSRF Token": {
+    "prefix": "jcsrf",
+    "body": "{% csrf_token %}",
+    "description": "Django CSRF token"
+  },
+  "Jinja Load": {
+    "prefix": "jload",
+    "body": "{% load ${1:template_tags} %}",
+    "description": "Django load tag"
+  },
+  "Jinja With": {
+    "prefix": "jwith",
+    "body": [
+      "{% with ${1:var}=${2:value} %}",
+      "\t$0",
+      "{% endwith %}"
+    ],
+    "description": "Jinja with statement"
+  },
+  "Jinja Autoescape": {
+    "prefix": "jautoescape",
+    "body": [
+      "{% autoescape ${1:on} %}",
+      "\t$0",
+      "{% endautoescape %}"
+    ],
+    "description": "Jinja autoescape block"
+  }
+}

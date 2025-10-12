@@ -4,7 +4,6 @@
 local opt = vim.opt
 
 -- General
-opt.compatible = false                    -- Improved defaults
 opt.termguicolors = true                  -- Enable 24-bit RGB colors
 opt.swapfile = false                      -- Never use swapfile
 opt.updatetime = 100                      -- Default is 4000ms
@@ -45,6 +44,10 @@ opt.wildmenu = true                       -- Graphical menu for autocomplete
 -- Buffers
 opt.hidden = true                         -- Allow buffer switching without saving
 
+-- Enable reading project-local .nvim.lua or .exrc files
+opt.exrc = true                           -- Enable project-local config
+opt.secure = true                         -- Restrict what project configs can do
+
 -- Python providers
 vim.g.python3_host_prog = '~/.vimvenv/bin/python'
 vim.g.perl_host_prog = '/usr/bin/perl'
@@ -53,8 +56,11 @@ vim.g.perl_host_prog = '/usr/bin/perl'
 vim.g.mapleader = " "                     -- Use space as leader
 
 -- Plugin settings
+vim.g.vsnip_snippet_dir = vim.fn.stdpath('config') .. '/vsnip_snippets'
 vim.g.vsnip_filetypes = {
   python = { 'django' },
-  ['jinja.html'] = { 'djangohtml' },
-  htmljinja = { 'djangohtml' }
+  html = { 'html', 'htmldjango', 'htmljinja' },  -- Load all HTML variants
+  htmldjango = { 'htmldjango', 'html' },
+  htmljinja = { 'htmljinja', 'html', 'htmldjango' },
+  ['jinja.html'] = { 'htmljinja', 'htmldjango' },
 }
