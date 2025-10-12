@@ -45,13 +45,6 @@ alias cloudrestart="cd $HOME/dev/cloud && uv sync --frozen --inexact && rm -rf b
 
 ### FZF
 export BAT_THEME="gruvbox-dark"
-# How to invoke the fzf command, especially in fzf.vim
-    # --files: List files that would be searched but do not search
-    # --no-ignore: Do not respect .gitignore, etc...
-    # --hidden: Search hidden files and folders
-    # --follow: Follow symlinks
-    # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-####export FZF_DEFAULT_COMMAND='rg --smart-case --files --hidden --follow --glob "!.git/*"'
 
 export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target,.mypy_cache,build,__pycache__,.ruff_cache,.pytest_cache,locale,tmp
