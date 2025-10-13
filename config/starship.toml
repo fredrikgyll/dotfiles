@@ -1,0 +1,25 @@
+# Starship prompt configuration
+# Minimal setup: show directory and git status only
+
+# Disable modules we don't want
+[docker_context]
+disabled = true
+
+[package]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[python]
+disabled = true
+
+[aws]
+disabled = true
+
+# Keep these enabled (default)
+# - directory
+# - git_branch
+# - git_status
+# - cmd_duration (if > 2s)
+# - status (on error)

@@ -1,32 +1,34 @@
-autoload -U compinit; compinit
+# Zsh interactive shell configuration
 
-export TERM=xterm-256color
-export LANG=en_US.UTF-8
-export EDITOR=/opt/homebrew/bin/nvim
-export PYTHONBREAKPOINT="pudb.set_trace"
+### Completion
+autoload -Uz compinit
+# Only regenerate compdump once per day for better performance
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qNmh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
 ### History
 export HISTFILE=~/.zsh_history
-HISTSIZE=999999999
-SAVEHIST=$HISTSIZE
-setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
-setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
-setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
-setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+HISTSIZE=100000                  # Keep 100k in memory (fast)
+SAVEHIST=999999999               # Keep everything on disk (your life story!)
+setopt INC_APPEND_HISTORY        # Write to history file immediately
+setopt EXTENDED_HISTORY          # Write timestamp and duration
+setopt HIST_FIND_NO_DUPS         # Don't display duplicates in search
+setopt HIST_IGNORE_ALL_DUPS      # Delete old entry if new is duplicate
 
-
-# use emacs keymap so standard C-A/E/K etc work in shell
-####bindkey -e
+### Quality of life options
+setopt AUTO_CD                   # cd by typing directory name
+setopt AUTO_PUSHD                # Make cd push old directory onto stack
+setopt PUSHD_IGNORE_DUPS         # Don't push duplicates
+setopt CORRECT                   # Spelling correction for commands
+setopt COMPLETE_IN_WORD          # Complete from both ends of word
 
 ### Direnv
 if command -v direnv 1>/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 fi
-#
-
-
-# PGP
-export GPG_TTY=$(tty)
 
 ### Aliases
 alias la="eza -al --git-ignore --group-directories-first --git"
@@ -37,56 +39,26 @@ alias vim=nvim
 alias g=git
 alias gs="git status"
 alias gl="git lg -25"
-alias gcm="git checkout master"
+alias gcm="git checkout main"
 alias szsh="source $HOME/.zshrc"
 alias ezsh="vim $HOME/.zshrc"
 
 alias cloudrestart="cd $HOME/dev/cloud && uv sync --frozen --inexact && rm -rf build/ && yarn && yarn build && uv run --frozen python manage.py migrate && uv run --frozen python manage.py collectstatic --no-input --no-post-process"
 
 ### FZF
-export BAT_THEME="gruvbox-dark"
-
 export FZF_CTRL_T_OPTS="
-  --walker-skip .git,node_modules,target,.mypy_cache,build,__pycache__,.ruff_cache,.pytest_cache,locale,tmp
+  --walker-skip .git
+  --walker-opts='--no-ignore-parent,--git-ignore'
   --preview 'bat -n --color=always {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
-
 source <(fzf --zsh)
 
-### Better history search
-#autoload -U up-line-or-beginning-search
-#autoload -U down-line-or-beginning-search
-#zle -N up-line-or-beginning-search
-#zle -N down-line-or-beginning-search
-#bindkey "[A" up-line-or-beginning-search # Up
-#bindkey "[B" down-line-or-beginning-search # Down
+### Prompt (Starship)
+eval "$(starship init zsh)"
 
-###Kitty
-
-# Completion for kitty
-#kitty + complete setup zsh | source /dev/stdin
-
-
-### MOTD
-####function echo_color() {
-####  local color="$1"
-####  printf "${color}$2\033[0m\n"
-####}
-
-####echo_color "\033[0;90m" "c-f  Move forward"
-####echo_color "\033[0;90m" "c-b  Move backward"
-####echo_color "\033[0;90m" "c-p  Move up"
-####echo_color "\033[0;90m" "c-n  Move down"
-####echo_color "\033[0;90m" "c-h  Delete backward"
-
-# Prompt
-fpath+=($HOME/.zsh/pure)
-autoload -U promptinit; promptinit
-prompt pure
-
+### Plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-#bindkey '\e[A' history-beginning-search-backward
-#bindkey '\e[B' history-beginning-search-forward
-
+### Key bindings (emacs mode)
+bindkey -e  # Enable emacs-style key bindings (Ctrl-A, Ctrl-E, etc.)

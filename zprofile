@@ -1,13 +1,9 @@
-# Set PATH, MANPATH, etc., for Homebrew.
+# Login shell configuration (PATH setup)
 
-# Brew
+# Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Node version manager (fnm)
 eval "$(fnm env --use-on-cd --shell zsh)"
 
-#Poetry
 export PATH="/Users/fredrikgy/.local/bin:$PATH"
-export PATH="/usr/local/share/texlive/2018/bin/universal-darwin:$PATH"
-
-# Bat theme
-export BAT_THEME="gruvbox-dark"
