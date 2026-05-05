@@ -18,6 +18,13 @@ keymap('v', '<leader>y', '"+y', opts)
 keymap('v', '<leader>Y', '"+yg$', opts)
 keymap('n', '<leader>y', '"+y', opts)
 keymap('n', '<leader>yy', '"+yy', opts)
+
+keymap( 'n', '<leader>cp', function ()
+  vim.fn.setreg('+', vim.fn.expand('%')) -- write to clippoard end
+end, opts)
+
+keymap("n", "<Leader>xo", ":e <C-r>+<CR>", opt) -- edit path in clipboard
+
 -- Neovim automatically handles paste mode, no need for :set paste
 keymap('n', '<leader>p', '"+p', opts)
 keymap('n', '<leader>P', '"+P', opts)
