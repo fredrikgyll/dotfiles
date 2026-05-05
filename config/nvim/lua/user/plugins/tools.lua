@@ -1,10 +1,10 @@
 -- Development tools
 return {
   -- Automatic ctag generation
-  {
-    'ludovicchabant/vim-gutentags',
-    event = { 'BufReadPost', 'BufNewFile' },
-  },
+ -- {
+ --   'ludovicchabant/vim-gutentags',
+ --   event = { 'BufReadPost', 'BufNewFile' },
+ -- },
 
   -- Tagbar for tag navigation
   {
