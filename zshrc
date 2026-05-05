@@ -58,7 +58,7 @@ source <(fzf --zsh)
 eval "$(starship init zsh)"
 
 ### Plugins
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ### Key bindings (emacs mode)
 bindkey -e  # Enable emacs-style key bindings (Ctrl-A, Ctrl-E, etc.)
