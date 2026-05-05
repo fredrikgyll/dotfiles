@@ -79,17 +79,6 @@ return {
           enable_rename = true,       -- Auto rename pairs of tags
           enable_close_on_slash = false -- Auto close on trailing </
         },
-	aliases = {
-	    ["htmljinja"] = "html",
-	},
-        -- Add custom filetypes
-        per_filetype = {
-          ["html"] = { enable_close = true },
-          ["htmldjango"] = { enable_close = true },
-          ["htmljinja"] = { enable_close = true },
-          ["jinja"] = { enable_close = true },
-          ["jinja.html"] = { enable_close = true },
-        }
       })
     end
   },

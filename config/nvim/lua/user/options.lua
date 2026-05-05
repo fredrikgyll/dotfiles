@@ -57,10 +57,3 @@ vim.g.mapleader = " "                     -- Use space as leader
 
 -- Plugin settings
 vim.g.vsnip_snippet_dir = vim.fn.stdpath('config') .. '/vsnip_snippets'
-vim.g.vsnip_filetypes = {
-  python = { 'django' },
-  html = { 'html', 'htmldjango', 'htmljinja' },  -- Load all HTML variants
-  htmldjango = { 'htmldjango', 'html' },
-  htmljinja = { 'htmljinja', 'html', 'htmldjango' },
-  ['jinja.html'] = { 'htmljinja', 'htmldjango' },
-}

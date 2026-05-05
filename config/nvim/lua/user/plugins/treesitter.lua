@@ -5,15 +5,12 @@ return {
     branch = 'master',
     build = ':TSUpdate',
     event = { 'BufReadPost', 'BufNewFile' },
-    dependencies = {
-      'geigerzaehler/tree-sitter-jinja2',
-    },
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline",
-          "json", "javascript", "typescript", "jinja", "html", "htmldjango",
-          "python", "bash", "rust", "css", "scss", "jinja2"
+          "json", "javascript", "typescript", "html",
+          "python", "bash", "rust", "css", "scss",
         },
         highlight = {
           enable = true,
@@ -29,13 +26,6 @@ return {
         indent = {
           enable = false
         }
-      })
-
-      -- Custom filetype detection for jinja templates
-      vim.filetype.add({
-        pattern = {
-          [".*/jinja2/.*/.*%.html"] = "htmljinja",
-        },
       })
     end
   },

@@ -20,8 +20,6 @@ end
 -- 2-space indentation for web files
 set_indent('html', 2)
 set_indent('htmldjango', 2)
-set_indent('jinja', 2)
-set_indent('htmljinja', 2)
 set_indent('xhtml', 2)
 set_indent('xml', 2)
 set_indent('css', 2)
@@ -42,38 +40,6 @@ autocmd({ 'BufRead', 'BufNewFile' }, {
   command = 'set filetype=json'
 })
 
--- Django/Jinja HTML detection based on directory structure
--- Detect Django projects: if manage.py exists in project root, treat .html as htmldjango
-autocmd({ 'BufRead', 'BufNewFile' }, {
-  pattern = '*.html',
-  callback = function()
-    local file_path = vim.fn.expand('%:p')
-
-    -- Check if we're in a templates/ directory (Django convention)
-    if file_path:match('/templates/') then
-      vim.bo.filetype = 'htmldjango'
-      return
-    end
-
-    -- Check if manage.py exists in any parent directory (Django project)
-    local current_dir = vim.fn.expand('%:p:h')
-    while current_dir ~= '/' do
-      if vim.fn.filereadable(current_dir .. '/manage.py') == 1 then
-        vim.bo.filetype = 'htmldjango'
-        return
-      end
-      current_dir = vim.fn.fnamemodify(current_dir, ':h')
-    end
-
-    -- Check for jinja2/ directory pattern (already handled by treesitter)
-    if file_path:match('/jinja2/') then
-      vim.bo.filetype = 'htmljinja'
-      return
-    end
-
-    -- Otherwise keep default html
-  end
-})
 
 -- Trim trailing whitespace on save
 local trim_group = augroup('TrimWhitespace', { clear = true })

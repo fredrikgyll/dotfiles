@@ -96,19 +96,9 @@ return {
         capabilities = capabilities,
       })
 
-      vim.lsp.config('tailwindcss', {
-        cmd = { 'tailwindcss-language-server', '--stdio' },
-        filetypes = {
-          "jinja", "jinja.html", "htmljinja", "django-html", "htmldjango",
-          "html", "markdown", "css", "less", "postcss", "sass", "scss",
-          "javascript", "javascriptreact", "typescript", "typescriptreact"
-        },
-        capabilities = capabilities,
-      })
-
        vim.lsp.config('html', {
          cmd = { 'vscode-html-language-server', '--stdio' },
-         filetypes = { "html", "templ", "jinja.html", "htmljinja" },
+         filetypes = { "html", },
          capabilities = capabilities,
        })
 
@@ -119,7 +109,6 @@ return {
 	      'denols',
 	      'ts_ls',
 	      'jsonls',
-	      'tailwindcss',
 	      'html',
       })
     end
