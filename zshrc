@@ -73,3 +73,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 #mise
 eval "$(mise activate -s zsh)"
 
+
+eval "$(zoxide init zsh)"
+
