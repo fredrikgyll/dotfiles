@@ -2,13 +2,14 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'master',
     build = ':TSUpdate',
     event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
       'geigerzaehler/tree-sitter-jinja2',
     },
     config = function()
-      require('nvim-treesitter.configs').setup({
+      require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline",
           "json", "javascript", "typescript", "jinja", "html", "htmldjango",
