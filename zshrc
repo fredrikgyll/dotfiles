@@ -68,3 +68,7 @@ bindkey -e  # Enable emacs-style key bindings (Ctrl-A, Ctrl-E, etc.)
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+#mise
+eval "$(mise activate -s zsh)"
+
