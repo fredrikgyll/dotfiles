@@ -13,6 +13,16 @@ keymap('n', '<C-j>', ':wincmd j<CR>', opts)
 keymap('n', '<C-k>', ':wincmd k<CR>', opts)
 keymap('n', '<C-l>', ':wincmd l<CR>', opts)
 
+keymap('n', '<leader>b', ':cclose<CR>', opts)
+
+vim.cmd('command! -nargs=* -complete=option Q q <args>')
+vim.cmd('command! -nargs=* -complete=option Qa qa <args>')
+vim.cmd('command! -nargs=* -complete=option QA qa <args>')
+vim.cmd('command! -nargs=* -complete=option W w <args>')
+vim.cmd('command! -nargs=* -complete=option Wa wa <args>')
+vim.cmd('command! -nargs=* -complete=option Wq wq <args>')
+vim.cmd('command! -nargs=* -complete=option WQ wq <args>')
+vim.cmd('command! -nargs=* -complete=option E e <args>')
 -- System clipboard operations
 keymap('v', '<leader>y', '"+y', opts)
 keymap('v', '<leader>Y', '"+yg$', opts)
