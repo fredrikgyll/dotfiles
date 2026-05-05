@@ -43,7 +43,6 @@ alias gcm="git checkout main"
 alias szsh="source $HOME/.zshrc"
 alias ezsh="vim $HOME/.zshrc"
 
-alias cloudrestart="cd $HOME/dev/cloud && uv sync --frozen --inexact && rm -rf build/ && yarn && yarn build && uv run --frozen python manage.py migrate && uv run --frozen python manage.py collectstatic --no-input --no-post-process"
 
 ### FZF
 export FZF_CTRL_T_OPTS="
