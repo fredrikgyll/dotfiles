@@ -1,5 +1,5 @@
 # Zsh interactive shell configuration
-
+LC_CTYPE="en_US.UTF-8"
 ### Completion
 autoload -Uz compinit
 # Only regenerate compdump once per day for better performance
