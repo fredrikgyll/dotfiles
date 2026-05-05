@@ -62,3 +62,10 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ### Key bindings (emacs mode)
 bindkey -e  # Enable emacs-style key bindings (Ctrl-A, Ctrl-E, etc.)
+
+# bun completions
+[ -s "/Users/fredrikgy/.bun/_bun" ] && source "/Users/fredrikgy/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
