@@ -1,4 +1,5 @@
-
 .temp/
 .claude/
 CLAUDE.md
+
+config/nvim/lazy-lock.json
