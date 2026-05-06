@@ -10,18 +10,11 @@ return {
     config = function()
       -- Custom function to get current scope path (e.g., module.Class.method)
       local function get_current_scope()
-        local ts_utils_ok, ts_utils = pcall(require, 'nvim-treesitter.ts_utils')
-        if not ts_utils_ok then
-          return ''
-        end
-
-        local current_node = ts_utils.get_node_at_cursor()
-        if not current_node then
-          return ''
-        end
+        local node = vim.treesitter.get_node()
+        if not node then return '' end
 
         local scopes = {}
-        local expr = current_node
+        local expr = node
 
         -- Walk up the tree and collect all scope names
         while expr do

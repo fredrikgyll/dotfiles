@@ -12,26 +12,6 @@ return {
     end
   },
 
-  -- Smart comment toggling
-  {
-    'numToStr/Comment.nvim',
-    event = { 'BufReadPost', 'BufNewFile' },
-    config = function()
-      require('Comment').setup({
-        -- LHS of toggle mappings in NORMAL mode
-        toggler = {
-          line = 'gcc',  -- Line-comment toggle
-          block = 'gbc', -- Block-comment toggle
-        },
-        -- LHS of operator-pending mappings in NORMAL and VISUAL mode
-        opleader = {
-          line = 'gc',   -- Line-comment operator
-          block = 'gb',  -- Block-comment operator
-        },
-      })
-    end
-  },
-
   -- Auto-close brackets, quotes, etc.
   {
     'windwp/nvim-autopairs',
@@ -64,22 +44,6 @@ return {
           return '<C-l>'  -- Default behavior if not before closing char
         end
       end, { expr = true, noremap = true, desc = 'Jump out of pairs or default <C-l>' })
-    end
-  },
-
-  -- Auto-close and auto-rename HTML tags
-  {
-    'windwp/nvim-ts-autotag',
-    event = { 'BufReadPost', 'BufNewFile' },
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    config = function()
-      require('nvim-ts-autotag').setup({
-        opts = {
-          enable_close = true,        -- Auto close tags
-          enable_rename = true,       -- Auto rename pairs of tags
-          enable_close_on_slash = false -- Auto close on trailing </
-        },
-      })
     end
   },
 

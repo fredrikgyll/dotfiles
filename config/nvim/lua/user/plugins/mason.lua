@@ -31,7 +31,7 @@ return {
           'html',
           'tailwindcss',
         },
-        automatic_installation = true,
+        automatic_installation = false,
       })
     end
   }

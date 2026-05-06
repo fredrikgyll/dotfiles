@@ -3,7 +3,7 @@ require('user.keymaps')
 require('user.autocmds')
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
     vim.fn.system {
         'git',
         'clone',
@@ -22,4 +22,5 @@ require('lazy').setup(
     }
 )
 
+require('user.lsp')
 require('user.colors')

@@ -28,11 +28,11 @@ return {
           markdown = { 'prettier' },
           lua = { 'stylua' },
         },
-        -- Optional: format on save
-        -- format_on_save = {
-        --   timeout_ms = 500,
-        --   lsp_fallback = true,
-        -- },
+        format_on_save = function(bufnr)
+          if vim.bo[bufnr].filetype == 'python' then
+            return { timeout_ms = 500, lsp_format = false }
+          end
+        end,
       })
     end
   }
