@@ -43,7 +43,7 @@ alias gcm="git checkout main"
 alias szsh="source $HOME/.zshrc"
 alias ezsh="vim $HOME/.zshrc"
 
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+alias tailscale=Tailscale
 
 ### FZF
 export FZF_CTRL_T_OPTS="
