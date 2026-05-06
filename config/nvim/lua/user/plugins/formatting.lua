@@ -1,4 +1,3 @@
--- Formatting with conform.nvim
 return {
   {
     'stevearc/conform.nvim',
@@ -8,7 +7,7 @@ return {
       {
         '<leader>f',
         function()
-          require('conform').format({ async = true, lsp_fallback = true })
+          require('conform').format({ async = true, lsp_format = 'fallback' })
         end,
         mode = '',
         desc = 'Format buffer',
@@ -24,12 +23,16 @@ return {
           typescriptreact = { 'prettier' },
           json = { 'prettier' },
           html = { 'prettier' },
+          htmldjango = { 'trim_whitespace' },
           css = { 'prettier' },
           markdown = { 'prettier' },
           lua = { 'stylua' },
         },
         format_on_save = function(bufnr)
-          if vim.bo[bufnr].filetype == 'python' then
+          local ft = vim.bo[bufnr].filetype
+          if ft == 'python' then
+            return { timeout_ms = 500, lsp_format = false }
+          elseif ft == 'htmldjango' then
             return { timeout_ms = 500, lsp_format = false }
           end
         end,

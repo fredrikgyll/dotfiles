@@ -6,18 +6,6 @@ return {
  --   event = { 'BufReadPost', 'BufNewFile' },
  -- },
 
-  -- Tagbar for tag navigation
-  {
-    'majutsushi/tagbar',
-    keys = {
-      { '<F12>', ':TagbarToggle<CR>', desc = 'Toggle Tagbar' },
-    },
-    config = function()
-      vim.g.tagbar_map_nexttag = "]n"
-      vim.g.tagbar_map_prevtag = "[n"
-    end
-  },
-
   -- Dash integration
   {
     'rizzatti/dash.vim',
