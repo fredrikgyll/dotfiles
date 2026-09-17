@@ -50,7 +50,6 @@ fi
 ### FZF
 export FZF_CTRL_T_OPTS="
   --walker-skip .git
-  --walker-opts='--no-ignore-parent,--git-ignore'
   --preview 'bat -n --color=always {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
@@ -84,12 +83,18 @@ if command -v mise 1>/dev/null 2>&1; then
   eval "$(mise activate -s zsh)"
 fi
 
+export FORGIT_SWITCH_BRANCH_GIT_OPTS='--sort=committerdate'
+# Forgit - Utility tool for using git interactively - brew install forgit
+[ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh ] && source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh
+
 if command -v zoxide 1>/dev/null 2>&1; then
   eval "$(zoxide init zsh)"
 fi
+
+# Pi
+export PATH="/Users/fredrikgy/.local/share/mise/installs/node/24.18.1/bin:$PATH"
 
 ### Machine-local overrides (not tracked)
 if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
-
