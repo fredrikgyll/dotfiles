@@ -24,10 +24,8 @@ user_cmd('WQ', 'wq<bang> <args>', { bang = true, nargs = '*' })
 user_cmd('E',  'e<bang> <args>',  { bang = true, nargs = '*' })
 
 -- System clipboard operations
-keymap('v', '<leader>y', '"+y', opts)
-keymap('v', '<leader>Y', '"+yg$', opts)
-keymap('n', '<leader>y', '"+y', opts)
-keymap('n', '<leader>yy', '"+yy', opts)
+keymap({ 'n', 'x' }, '<leader>y', '"+y', opts)
+keymap('n', '<leader>Y', '"+y$', opts)
 
 keymap('n', '<leader>cp', function()
   vim.fn.setreg('+', vim.fn.expand('%'))
@@ -35,10 +33,8 @@ end, opts)
 
 keymap('n', '<Leader>xo', ':e <C-r>+<CR>', opts)
 
-keymap('n', '<leader>p', '"+p', opts)
-keymap('n', '<leader>P', '"+P', opts)
-keymap('v', '<leader>p', '"+p', opts)
-keymap('v', '<leader>P', '"+P', opts)
+keymap({ 'n', 'x' }, '<leader>p', '"+p', opts)
+keymap({ 'n', 'x' }, '<leader>P', '"+P', opts)
 
 -- Keep selection when indenting
 keymap('v', '<', '<gv', opts)
