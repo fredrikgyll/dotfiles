@@ -1,14 +1,12 @@
 -- Editing enhancement plugins
 return {
-  -- Surround motion (modern Lua rewrite)
+  -- Surround motion
   {
-    'kylechui/nvim-surround',
-    version = "*",
+    'nvim-mini/mini.nvim',
+    version = false,
     event = { 'BufReadPost', 'BufNewFile' },
     config = function()
-      require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
+      require('mini.surround').setup()
     end
   },
 

@@ -17,4 +17,9 @@ return {
     'towolf/vim-helm',
     ft = 'helm',
   },
+
+  {
+    'nvim-pack/nvim-spectre',
+    cmd = { 'Spectre' }
+  }
 }
