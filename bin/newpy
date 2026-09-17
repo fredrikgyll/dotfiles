@@ -30,8 +30,9 @@ rm -rf .git uv.lock
 
 mv src/skel_proj "src/$pkg"
 mv tests/test_skel_proj.py "tests/test_$pkg.py"
+# CLAUDE.md is a symlink to AGENTS.md; sed would replace it with a plain file.
 sed -i '' -e "s/skel_proj/$pkg/g" -e "s/skel-proj/$name/g" \
-  pyproject.toml README.md "src/$pkg/__init__.py" "tests/test_$pkg.py"
+  pyproject.toml README.md AGENTS.md "src/$pkg/__init__.py" "tests/test_$pkg.py"
 
 git init -b main --quiet
 mise trust --quiet
