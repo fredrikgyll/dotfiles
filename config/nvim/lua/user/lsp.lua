@@ -92,3 +92,11 @@ vim.lsp.enable({
   'jsonls',
   'html',
 })
+
+vim.api.nvim_create_autocmd('VimEnter', {
+  group = vim.api.nvim_create_augroup('UserWorkspaceSymbols', {}),
+  once = true,
+  callback = function()
+    require('user.workspace_symbols').warmup()
+  end,
+})
