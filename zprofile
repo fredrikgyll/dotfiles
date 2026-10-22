@@ -1,16 +1,20 @@
 # Login shell configuration (PATH setup)
 
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ "$OSTYPE" == darwin* ]]; then
+  # Homebrew
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Node version manager (fnm)
-eval "$(fnm env --use-on-cd --shell zsh)"
+  # Add Tailscale to Path
+  export PATH="/Applications/Tailscale.app/Contents/MacOS:$PATH"
+
+  # Added by OrbStack: command-line tools and integration
+  # This won't be added again if you remove it.
+  source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
-# Add Tailscale to Path
-export PATH="/Applications/Tailscale.app/Contents/MacOS:$PATH"
-
-# Added by OrbStack: command-line tools and integration
-# This won't be added again if you remove it.
-source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+# Node version manager (fnm)
+if command -v fnm 1>/dev/null 2>&1; then
+  eval "$(fnm env --use-on-cd --shell zsh)"
+fi

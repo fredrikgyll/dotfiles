@@ -17,4 +17,4 @@ export GPG_TTY=$(tty)
 export BAT_THEME="gruvbox-dark"
 
 # Cargo
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"

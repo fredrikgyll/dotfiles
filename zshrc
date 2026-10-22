@@ -43,7 +43,9 @@ alias gcm="git checkout main"
 alias szsh="source $HOME/.zshrc"
 alias ezsh="vim $HOME/.zshrc"
 
-alias tailscale=Tailscale
+if [[ "$OSTYPE" == darwin* ]]; then
+  alias tailscale=Tailscale
+fi
 
 ### FZF
 export FZF_CTRL_T_OPTS="
@@ -52,13 +54,20 @@ export FZF_CTRL_T_OPTS="
   --preview 'bat -n --color=always {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
-source <(fzf --zsh)
+if command -v fzf 1>/dev/null 2>&1; then
+  source <(fzf --zsh)
+fi
 
 ### Prompt (Starship)
-eval "$(starship init zsh)"
+if command -v starship 1>/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
 
 ### Plugins
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+for f in /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
+         $HOME/.local/share/zsh-autosuggestions/zsh-autosuggestions.zsh; do
+  if [[ -f $f ]]; then source $f; break; fi
+done
 
 ### Key bindings (emacs mode)
 bindkey -e  # Enable emacs-style key bindings (Ctrl-A, Ctrl-E, etc.)
@@ -71,8 +80,16 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 #mise
-eval "$(mise activate -s zsh)"
+if command -v mise 1>/dev/null 2>&1; then
+  eval "$(mise activate -s zsh)"
+fi
 
+if command -v zoxide 1>/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
 
-eval "$(zoxide init zsh)"
+### Machine-local overrides (not tracked)
+if [[ -f ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
 
