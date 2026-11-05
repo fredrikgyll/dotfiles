@@ -83,7 +83,6 @@ if command -v mise 1>/dev/null 2>&1; then
   eval "$(mise activate -s zsh)"
 fi
 
-export FORGIT_SWITCH_BRANCH_GIT_OPTS='--sort=committerdate'
 # Forgit - Utility tool for using git interactively - brew install forgit
 [ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh ] && source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh
 
