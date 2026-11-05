@@ -10,6 +10,9 @@ if [[ "$OSTYPE" == darwin* ]]; then
   # Added by OrbStack: command-line tools and integration
   # This won't be added again if you remove it.
   source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+  # Load the git signing key passphrase from the macOS Keychain
+  ssh-add --apple-load-keychain -q 2>/dev/null
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
