@@ -19,6 +19,7 @@ opt.splitright = true
 -- Text formatting
 opt.textwidth = 0
 opt.wrapmargin = 0
+opt.wrap = false
 opt.formatoptions:remove("t")
 
 -- Search
