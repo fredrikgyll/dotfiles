@@ -91,9 +91,6 @@ if command -v zoxide 1>/dev/null 2>&1; then
   eval "$(zoxide init zsh)"
 fi
 
-# Pi
-export PATH="/Users/fredrikgy/.local/share/mise/installs/node/24.18.1/bin:$PATH"
-
 ### Machine-local overrides (not tracked)
 if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
