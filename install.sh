@@ -35,3 +35,4 @@ link zprofile             .zprofile
 link zshrc                .zshrc
 link config/nvim          .config/nvim
 link config/starship.toml .config/starship.toml
+link config/atuin/config.toml .config/atuin/config.toml

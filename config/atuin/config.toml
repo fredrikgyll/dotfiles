@@ -1,0 +1,3 @@
+# Atuin client config. Linked to ~/.config/atuin/config.toml by install.sh;
+# zshrc sets ATUIN_CONFIG_DIR to that directory so no other config is read.
+sync_address = "https://atuin.apate.no"

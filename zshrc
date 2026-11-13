@@ -90,6 +90,13 @@ if command -v zoxide 1>/dev/null 2>&1; then
   eval "$(zoxide init zsh)"
 fi
 
+### Atuin (shell history sync)
+# Pin the config dir so a stray ~/.atuin/config.toml is never used.
+export ATUIN_CONFIG_DIR="$HOME/.config/atuin"
+if command -v atuin 1>/dev/null 2>&1; then
+  eval "$(atuin init zsh)"
+fi
+
 ### Machine-local overrides (not tracked)
 if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
