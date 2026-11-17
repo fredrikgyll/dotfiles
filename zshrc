@@ -93,6 +93,7 @@ fi
 ### Atuin (shell history sync)
 # Pin the config dir so a stray ~/.atuin/config.toml is never used.
 export ATUIN_CONFIG_DIR="$HOME/.config/atuin"
+[[ -f "$HOME/.atuin/bin/env" ]] && . "$HOME/.atuin/bin/env"
 if command -v atuin 1>/dev/null 2>&1; then
   eval "$(atuin init zsh)"
 fi
